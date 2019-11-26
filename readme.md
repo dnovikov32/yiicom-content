@@ -28,6 +28,10 @@
             ],
         ]
     ],
+    // Override error handler        
+    'errorHandler' => [
+        'errorAction' => 'content/page/error',
+    ],            
     ...
     // Override default theme
     'view' => [
