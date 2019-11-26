@@ -1,0 +1,12 @@
+{
+  "name": "yiicom/yiicom-content",
+  "description": "Yiicom content module",
+  "keywords": ["yii2", "yiicom", "commerce"],
+  "type": "yii2-extension",
+  "require": {
+    "yiicom/yiicom": "dev-master"
+  },
+  "autoload": {
+    "psr-4": { "yiicom\\content\\": "src" }
+  }
+}
