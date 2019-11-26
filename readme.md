@@ -1,6 +1,6 @@
 ## Yii commerce content module
 
-###Install
+### Install
 
 **app/backend/config/main.php**
 ```php
