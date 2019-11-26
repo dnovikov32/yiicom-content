@@ -6,8 +6,8 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\ServerErrorHttpException;
-use modules\commerce\backend\base\ApiController;
-use modules\commerce\common\traits\ModelTrait;
+use yiicom\backend\base\ApiController;
+use yiicom\common\traits\ModelTrait;
 use yiicom\content\common\models\Category;
 use yiicom\content\backend\models\CategorySearch;
 

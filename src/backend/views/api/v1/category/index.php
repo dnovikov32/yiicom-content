@@ -4,7 +4,7 @@ use yii\web\View;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
-use modules\commerce\backend\grid\ActionColumn;
+use yiicom\backend\grid\ActionColumn;
 use yiicom\content\backend\models\CategorySearch;
 
 /**

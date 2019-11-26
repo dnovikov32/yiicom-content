@@ -2,7 +2,7 @@
 
 namespace yiicom\content\backend;
 
-class Module extends \modules\commerce\common\Module
+class Module extends \yiicom\common\Module
 {
     /**
      * @return array

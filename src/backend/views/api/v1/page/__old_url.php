@@ -1,6 +1,6 @@
 <?php
 
-use modules\commerce\common\helpers\BooleanHelper;
+use yiicom\common\helpers\BooleanHelper;
 use yiicom\content\common\models\Page;
 
 /* @var yii\web\View $this */

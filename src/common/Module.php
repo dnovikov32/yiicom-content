@@ -2,7 +2,7 @@
 
 namespace yiicom\content\common;
 
-class Module extends \modules\commerce\common\Module
+class Module extends \yiicom\common\Module
 {
     
 }

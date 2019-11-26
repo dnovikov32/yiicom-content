@@ -2,7 +2,7 @@
 
 namespace yiicom\content\frontend\controllers;
 
-use modules\commerce\common\base\Controller;
+use yiicom\common\base\Controller;
 use yiicom\content\common\models\Page;
 use yiicom\content\frontend\traits\SitePageTrait;
 

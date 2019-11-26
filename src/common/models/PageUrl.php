@@ -6,8 +6,8 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\behaviors\TimestampBehavior;
-use modules\commerce\common\interfaces\ModelStatus;
-use modules\commerce\common\traits\ModelStatusTrait;
+use yiicom\common\interfaces\ModelStatus;
+use yiicom\common\traits\ModelStatusTrait;
 use yiicom\content\common\validators\UrlValidator;
 
 /**

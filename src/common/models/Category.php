@@ -7,10 +7,10 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\behaviors\TimestampBehavior;
-use modules\commerce\common\interfaces\ModelStatus;
-use modules\commerce\common\interfaces\ModelList;
-use modules\commerce\common\traits\ModelStatusTrait;
-use modules\commerce\common\traits\ModelListTrait;
+use yiicom\common\interfaces\ModelStatus;
+use yiicom\common\interfaces\ModelList;
+use yiicom\common\traits\ModelStatusTrait;
+use yiicom\common\traits\ModelListTrait;
 
 /**
  * @property integer $id

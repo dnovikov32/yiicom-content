@@ -32,7 +32,7 @@ class CommercePagesAsset extends AssetBundle
      * @var array
      */
     public $depends = [
-        \modules\commerce\backend\assets\CommerceAsset::class,
+        \yiicom\backend\assets\CommerceAsset::class,
         \modules\files\backend\assets\CommerceFilesAsset::class,
     ];
 }

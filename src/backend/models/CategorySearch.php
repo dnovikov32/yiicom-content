@@ -3,8 +3,8 @@
 namespace yiicom\content\backend\models;
 
 use yii\db\ActiveQuery;
-use modules\commerce\backend\search\SearchModelInterface;
-use modules\commerce\backend\search\SearchModelTrait;
+use yiicom\backend\search\SearchModelInterface;
+use yiicom\backend\search\SearchModelTrait;
 use yiicom\content\common\models\Category;
 
 class CategorySearch extends Category implements SearchModelInterface

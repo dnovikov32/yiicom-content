@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
 use yiicom\content\backend\models\PageSearch;
-use modules\commerce\backend\grid\ActionColumn;
+use yiicom\backend\grid\ActionColumn;
 
 /**
  * @var View $this

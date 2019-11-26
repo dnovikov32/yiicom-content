@@ -5,7 +5,7 @@ namespace yiicom\content\common\behaviors;
 use yii\base\Behavior;
 use yii\db\ActiveQuery;
 use yii\helpers\Json;
-use modules\commerce\common\models\ActiveRecord;
+use yiicom\common\models\ActiveRecord;
 use yiicom\content\common\interfaces\ModelPageUrl;
 use yiicom\content\common\models\PageUrl;
 
