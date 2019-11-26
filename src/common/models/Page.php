@@ -16,8 +16,8 @@ use yiicom\common\traits\ModelRelationsTrait;
 use yiicom\content\common\interfaces\ModelPageUrl;
 use yiicom\content\common\traits\ModelPageUrlTrait;
 use yiicom\content\common\behaviors\PageUrlBehavior;
-use modules\files\common\models\File;
-use modules\files\common\behaviors\FilesBehavior;
+use yiicom\files\common\models\File;
+use yiicom\files\common\behaviors\FilesBehavior;
 
 /**
  * @property integer $id
@@ -78,15 +78,15 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), [
-            'id' => Yii::t("commerce", "ID"),
-			'categoryId' => Yii::t("commerce", "Category ID"),
-			'title' => Yii::t("commerce", "Title"),
-			'teaser' => Yii::t("commerce", "Teaser"),
-			'body' => Yii::t("commerce", "Content"),
-			'template' => Yii::t("commerce", "Template"),
-            'status' => Yii::t("commerce", "Status"),
-            'createdAt' => Yii::t("commerce", "Created At"),
-            'updatedAt' => Yii::t("commerce", "Updated At"),
+            'id' => Yii::t("yiicom", "ID"),
+			'categoryId' => Yii::t("yiicom", "Category ID"),
+			'title' => Yii::t("yiicom", "Title"),
+			'teaser' => Yii::t("yiicom", "Teaser"),
+			'body' => Yii::t("yiicom", "Content"),
+			'template' => Yii::t("yiicom", "Template"),
+            'status' => Yii::t("yiicom", "Status"),
+            'createdAt' => Yii::t("yiicom", "Created At"),
+            'updatedAt' => Yii::t("yiicom", "Updated At"),
 		]);
 	}
 
@@ -116,7 +116,7 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
      */
     public function route()
     {
-        return 'pages/page/view';
+        return 'content/page/view';
     }
 
     /**

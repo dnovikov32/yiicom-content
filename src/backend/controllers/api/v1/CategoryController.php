@@ -75,7 +75,7 @@ class CategoryController extends ApiController
         try {
             return $this->findOrNewModel(Category::class, $id, true);
         } catch (\Throwable $e) {
-            throw new ServerErrorHttpException(Yii::t("commerce", "Server error: ") . $e->getMessage());
+            throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }
     }
 
@@ -88,14 +88,14 @@ class CategoryController extends ApiController
 
             if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
                 if (! $model->save(false)) {
-                    throw new ServerErrorHttpException(Yii::t("commerce", "Can't save model"));
+                    throw new ServerErrorHttpException(Yii::t("yiicom", "Can't save model"));
                 }
             }
 
             return $model;
 
         } catch (\Throwable $e) {
-            throw new ServerErrorHttpException(Yii::t("commerce", "Server error: ") . $e->getMessage());
+            throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }
     }
 
@@ -114,10 +114,10 @@ class CategoryController extends ApiController
                 return ['status' => 'success'];
             }
 
-            throw new ServerErrorHttpException(Yii::t("commerce", "Can't delete model"));
+            throw new ServerErrorHttpException(Yii::t("yiicom", "Can't delete model"));
 
         } catch (\Throwable $e) {
-            throw new ServerErrorHttpException(Yii::t("commerce", "Server error: ") . $e->getMessage());
+            throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }
     }
 
