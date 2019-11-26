@@ -11,8 +11,49 @@
         'class' => yiicom\content\backend\Module::class
     ],
 ],
+```
+
+**app/frontend/config/main.php**
+```php
+'components' => [
+    ...
+    // Enable url aliases            
+    'urlManager' => [
+        'enablePrettyUrl' => true,
+        'showScriptName' => false,
+        'enableStrictParsing' => true,
+        'rules' => [
+            [
+                'class' => yiicom\content\common\components\UrlRule::class,
+            ],
+        ]
+    ],
+    ...
+    // Override default theme
+    'view' => [
+        'theme' => [
+            'pathMap' => [
+                ...
+                '@yiicom/content' => '@app/themes/content',
+            ]
+        ]
+    ],
+],
+
+
+// Enable frontend routes
+'modules' => [
+    ...
+    'content' => [
+        'class' => yiicom\content\frontend\Module::class
+    ],
+],
+
+
+
 
 ```
+
 **app/console/config/main.php**
 ```php
 // Enable module commands
