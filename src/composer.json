@@ -1,6 +1,0 @@
-{
-    "require": {
-        "commerce/commerce": "^1.0.0",
-        "commerce/commerce-files": "^1.0.0"
-    }
-}

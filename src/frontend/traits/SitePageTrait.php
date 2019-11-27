@@ -2,6 +2,7 @@
 
 namespace yiicom\content\frontend\traits;
 
+use Yii;
 use yii\db\ActiveRecord;
 use yiicom\content\common\models\PageUrl;
 
@@ -67,30 +68,22 @@ trait SitePageTrait
      * @param string $default
      * @return string
      */
-	public function getTemplate(ActiveRecord $model, $default = 'view')
+	public function getTemplate(ActiveRecord $model, string $default = 'view')
 	{
-	    if (false === $model->hasAttribute('template')) {
+	    if (! $model->hasAttribute('template') || empty($model->template)) {
 	        return $default;
         }
 
-	    if (empty($model->template)) {
+        $controller = Yii::$app->controller;
+        $module = $controller->module;
+        $template = "@app/themes/{$module->id}/frontend/views/{$controller->id}/{$model->template}";
+        $file = Yii::getAlias("$template.php");
+
+        if (! file_exists($file)) {
             return $default;
         }
 
         return (string) $model->template;
-
-//	    // TODO: add check template file exists
-//		if ($entity->template) {
-//            $controller = Yii::$app->controller;
-//            $module = $controller->module;
-//            $template = "@app/themes/$module->id/frontend/views/$controller->id/$this->template";
-//			$file = Yii::getAlias("$template.php");
-//
-//			if (file_exists($file)) {
-//				return $template;
-//			}
-//		}
-//>
 	}
 
 }
