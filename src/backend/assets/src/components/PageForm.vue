@@ -95,13 +95,13 @@
 
         computed: {
             settings: function () {
-                return this.$store.getters['settings'];
+                return this.$store.getters['commerce/settings'];
             },
             statuses: function () {
                 return _.isEmpty(this.settings) ? [] : this.settings.statusesList;
             },
             categories: function () {
-                return _.isEmpty(this.settings) ? [] : this.settings.pages.categories;
+                return _.isEmpty(this.settings) ? [] : this.settings.content.categories;
             }
         }
 

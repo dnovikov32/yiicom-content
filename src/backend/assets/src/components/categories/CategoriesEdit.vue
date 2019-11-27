@@ -76,25 +76,25 @@
 
         computed: {
             isDev: function () {
-                return this.$store.getters['isDev'];
+                return this.$store.getters['commerce/isDev'];
             },
             isLoading: function () {
-                return this.$store.getters['isLoading'];
+                return this.$store.getters['commerce/isLoading'];
             },
             hasError: function () {
-                return this.$store.getters['hasError'];
+                return this.$store.getters['commerce/hasError'];
             },
             model: function () {
                 return this.$store.getters['pages-categories/model'];
             },
             settings: function () {
-                return this.$store.getters['settings'];
+                return this.$store.getters['commerce/settings'];
             },
             statuses: function () {
                 return _.isEmpty(this.settings) ? [] : this.settings.statusesList;
             },
             categories: function () {
-                return _.isEmpty(this.settings) ? [] : this.settings.pages.categories;
+                return _.isEmpty(this.settings) ? [] : this.settings.content.categories;
             }
         },
 
@@ -121,10 +121,10 @@
 
                     this.$notify({type: 'success', text: 'Категория сохранена'});
 
-                    this.$store.dispatch('settings');
+                    this.$store.dispatch('commerce/settings');
 
                     if (isNewRecord) {
-                        this.$router.push({ path: `/pages/category/update?id=${this.model.id}` });
+                        this.$router.push({ path: `/content/category/update?id=${this.model.id}` });
                     }
                 });
 
@@ -133,8 +133,8 @@
             destroy () {
                 this.$store.dispatch('pages-categories/delete', this.model.id).then(() => {
                     this.$notify({type: 'success', text: 'Категория удалена'});
-                    this.$store.dispatch('settings');
-                    this.$router.push({ path: '/pages/category/index' });
+                    this.$store.dispatch('commerce/fetchSettings');
+                    this.$router.push({ path: '/content/category/index' });
                 });
             }
         }

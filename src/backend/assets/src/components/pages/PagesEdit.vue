@@ -29,7 +29,9 @@
 <script>
     import PageForm from "./../PageForm.vue";
     import UrlForm from "./../UrlForm.vue";
-    import FilesForm from "./../../../../../../files/backend/assets/src/components/FilesForm.vue";
+    // TODO: do something with import component from another module
+    import FilesForm from "./../../../../../../../yiicom-files/src/backend/assets/src/components/FilesForm.vue"
+
 
     export default {
 
@@ -41,26 +43,26 @@
 
         computed: {
             isDev: function () {
-                return this.$store.getters['isDev'];
+                return this.$store.getters['commerce/isDev'];
             },
             isLoading: function () {
-                return this.$store.getters['isLoading'];
+                return this.$store.getters['commerce/isLoading'];
             },
             hasError: function () {
-                return this.$store.getters['hasError'];
+                return this.$store.getters['commerce/hasError'];
             },
             model: function () {
-                return this.$store.getters['pages/model'];
+                return this.$store.getters['content-pages/model'];
             }
         },
 
         created () {
-            this.$store.dispatch('pages/find', this.$route.query.id);
+            this.$store.dispatch('content-pages/find', this.$route.query.id);
         },
 
         watch: {
             '$route': function () {
-                this.$store.dispatch('pages/find', this.$route.query.id);
+                this.$store.dispatch('content-pages/find', this.$route.query.id);
             }
         },
 
@@ -70,7 +72,7 @@
 
                 let isNewRecord = (this.model.id === null);
 
-                this.$store.dispatch('pages/save', this.model).then(() => {
+                this.$store.dispatch('content-pages/save', this.model).then(() => {
                     if (this.hasError) {
                         return false;
                     }
@@ -78,16 +80,16 @@
                     this.$notify({type: 'success', text: 'Материал сохранен'});
 
                     if (isNewRecord) {
-                        this.$router.push({ path: `/pages/page/update?id=${this.model.id}` });
+                        this.$router.push({ path: `/content/page/update?id=${this.model.id}` });
                     }
                 });
 
             },
 
             destroy () {
-                this.$store.dispatch('pages/delete', this.model.id).then(() => {
+                this.$store.dispatch('content-pages/delete', this.model.id).then(() => {
                     this.$notify({type: 'success', text: 'Материал удален'});
-                    this.$router.push({ path: '/pages/page/index' });
+                    this.$router.push({ path: '/content/page/index' });
                 });
             }
         }

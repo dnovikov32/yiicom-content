@@ -31,7 +31,7 @@ export default {
 
     actions: {
         all ({state, commit, rootState}, params) {
-            return Vue.axios.get('/pages/api/v1/page/index', {params: params})
+            return Vue.axios.get('/content/api/v1/page/index', {params: params})
                 .then(
                     response => commit('FETCH_ALL_SUCCESS', response.data),
                     error => {}
@@ -39,7 +39,7 @@ export default {
         },
 
         find ({state, commit, rootState}, id) {
-            return Vue.axios.get('/pages/api/v1/page/find', {params: {id: id}})
+            return Vue.axios.get('/content/api/v1/page/find', {params: {id: id}})
                 .then(
                     response => commit('FETCH_MODEL_SUCCESS', response.data),
                     error => {}
@@ -47,7 +47,7 @@ export default {
         },
 
         save ({state, commit, rootState}, model) {
-            return Vue.axios.post('/pages/api/v1/page/save', model)
+            return Vue.axios.post('/content/api/v1/page/save', model)
                 .then(
                     response => commit('FETCH_MODEL_SUCCESS', response.data),
                     error => {}
@@ -55,7 +55,7 @@ export default {
         },
 
         delete ({state, commit, rootState}, id) {
-            return Vue.axios.post('/pages/api/v1/page/delete', { id: id })
+            return Vue.axios.post('/content/api/v1/page/delete', { id: id })
                 .then(
                     response => commit('DELETE_MODEL_SUCCESS', response.data),
                     error => {}
