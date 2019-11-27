@@ -4,7 +4,7 @@ namespace yiicom\content\backend;
 
 use yiicom\content\common\models\Category;
 
-class Module extends \yiicom\common\Module
+class Module extends \yiicom\content\common\Module
 {
     /**
      * Return module settings for backend vue application

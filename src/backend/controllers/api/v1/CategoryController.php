@@ -22,7 +22,7 @@ class CategoryController extends ApiController
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort->route = '#/pages/category/index';
+        $dataProvider->sort->route = '#/content/category/index';
 
         return $this->renderPartial('index', [
             'searchModel' => $searchModel,
@@ -45,7 +45,7 @@ class CategoryController extends ApiController
                 'attribute' => 'title',
                 'format' => 'raw',
                 'value' => function(Category $model) {
-                    return Html::a($model->title, Url::to(['/#/pages/category/update', 'id' => $model->id]));
+                    return Html::a($model->title, Url::to(['/#/content/category/update', 'id' => $model->id]));
                 }
             ],
             [
@@ -56,7 +56,7 @@ class CategoryController extends ApiController
                     $parent = $model->parent;
 
                     return $parent
-                        ? Html::a($parent->title, Url::to(['/#/pages/category/update', 'id' => $parent->id]))
+                        ? Html::a($parent->title, Url::to(['/#/content/category/update', 'id' => $parent->id]))
                         : null;
                 }
             ],

@@ -22,7 +22,7 @@ interface ModelPageUrl
      * Returns route to frontend controller for PageUrl route field value
      *
      * ```php
-     *     return 'pages/page/view';
+     *     return 'content/page/view';
      * ```
      *
      * @return string

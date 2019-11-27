@@ -25,7 +25,7 @@ use yiicom\content\backend\models\CategorySearch;
         [
 			'class' => ActionColumn::class,
 			'template' => '{update} {delete}',
-			'controller' => '/#/pages/category',
+			'controller' => '/#/content/category',
             'headerOptions' => ['class' => 'wpx-75'],
         ]
     ]),

@@ -63,13 +63,13 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), [
-            'id' => Yii::t("yiicom", "ID"),
-			'parentId' => Yii::t("yiicom", "Parent category"),
-			'title' => Yii::t("yiicom", "Title"),
-            'status' => Yii::t("yiicom", "Status"),
-            'position' => Yii::t("yiicom", "Position"),
-            'createdAt' => Yii::t("yiicom", "Created At"),
-            'updatedAt' => Yii::t("yiicom", "Updated At"),
+            'id' => Yii::t('yiicom', 'ID'),
+			'parentId' => Yii::t('yiicom', 'Parent category'),
+			'title' => Yii::t('yiicom', 'Title'),
+            'status' => Yii::t('yiicom', 'Status'),
+            'position' => Yii::t('yiicom', 'Position'),
+            'createdAt' => Yii::t('yiicom', 'Created At'),
+            'updatedAt' => Yii::t('yiicom', 'Updated At'),
 		]);
 	}
 

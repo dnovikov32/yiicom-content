@@ -78,15 +78,15 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), [
-            'id' => Yii::t("yiicom", "ID"),
-			'categoryId' => Yii::t("yiicom", "Category ID"),
-			'title' => Yii::t("yiicom", "Title"),
-			'teaser' => Yii::t("yiicom", "Teaser"),
-			'body' => Yii::t("yiicom", "Content"),
-			'template' => Yii::t("yiicom", "Template"),
-            'status' => Yii::t("yiicom", "Status"),
-            'createdAt' => Yii::t("yiicom", "Created At"),
-            'updatedAt' => Yii::t("yiicom", "Updated At"),
+            'id' => Yii::t('yiicom', 'ID'),
+			'categoryId' => Yii::t('yiicom', 'Category ID'),
+			'title' => Yii::t('yiicom', 'Title'),
+			'teaser' => Yii::t('yiicom', 'Teaser'),
+			'body' => Yii::t('yiicom', 'Content'),
+			'template' => Yii::t('yiicom', 'Template'),
+            'status' => Yii::t('yiicom', 'Status'),
+            'createdAt' => Yii::t('yiicom', 'Created At'),
+            'updatedAt' => Yii::t('yiicom', 'Updated At'),
 		]);
 	}
 
