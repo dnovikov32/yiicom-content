@@ -17,7 +17,7 @@ class UrlAliasColumn extends DataColumn
     {
         parent::init();
 
-        $this->header = Yii::t('pages', 'Alias');
+        $this->header = Yii::t('yiicom-content', 'Alias');
     }
 
     /**
@@ -27,12 +27,12 @@ class UrlAliasColumn extends DataColumn
     {
         $alias = $model->url->alias ?? null;
 
-        if (null === $alias) {
+        if (! $alias) {
             return null;
         }
 
         return Html::a($alias, Yii::getAlias("@frontendWeb/$alias"), [
-            'title' => Yii::t('pages', 'Open page in new window'),
+            'title' => Yii::t('yiicom-content', 'Open page in new window'),
             'target' => '_blank'
         ]);
     }
