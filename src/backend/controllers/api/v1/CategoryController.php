@@ -73,7 +73,7 @@ class CategoryController extends ApiController
     public function actionFind(int $id = null)
     {
         try {
-            return $this->findOrNewModel(Category::class, $id, true);
+            return $this->findOrNewModel(Category::class, $id);
         } catch (\Throwable $e) {
             throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }
@@ -84,7 +84,7 @@ class CategoryController extends ApiController
         try {
             /* @var Category $model */
             $id = Yii::$app->request->post('id');
-            $model = $this->findOrNewModel(Category::class, $id, true);
+            $model = $this->findOrNewModel(Category::class, $id);
 
             if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
                 if (! $model->save(false)) {

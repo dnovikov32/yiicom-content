@@ -73,7 +73,7 @@ class PageController extends ApiController
     public function actionFind(int $id = null)
     {
         try {
-            return $this->findOrNewModel(Page::class, $id, true);
+            return $this->findOrNewModel(Page::class, $id);
         } catch (\Throwable $e) {
             throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }
@@ -84,7 +84,7 @@ class PageController extends ApiController
         try {
             /* @var Page $model */
             $id = Yii::$app->request->post('id');
-            $model = $this->findOrNewModel(Page::class, $id, true);
+            $model = $this->findOrNewModel(Page::class, $id);
 
             if ($model->loadAll(Yii::$app->request->post()) && $model->validateAll()) {
                 if (! $model->save(false)) {
