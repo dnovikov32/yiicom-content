@@ -85,7 +85,7 @@
                 return this.$store.getters['commerce/hasError'];
             },
             model: function () {
-                return this.$store.getters['pages-categories/model'];
+                return this.$store.getters['content-categories/model'];
             },
             settings: function () {
                 return this.$store.getters['commerce/settings'];
@@ -99,12 +99,12 @@
         },
 
         created () {
-            this.$store.dispatch('pages-categories/find', this.$route.query.id);
+            this.$store.dispatch('content-categories/find', this.$route.query.id);
         },
 
         watch: {
             '$route': function () {
-                this.$store.dispatch('pages-categories/find', this.$route.query.id);
+                this.$store.dispatch('content-categories/find', this.$route.query.id);
             }
         },
 
@@ -114,14 +114,14 @@
 
                 let isNewRecord = (this.model.id === null);
 
-                this.$store.dispatch('pages-categories/save', this.model).then(() => {
+                this.$store.dispatch('content-categories/save', this.model).then(() => {
                     if (this.hasError) {
                         return false;
                     }
 
                     this.$notify({type: 'success', text: 'Категория сохранена'});
 
-                    this.$store.dispatch('commerce/settings');
+                    this.$store.dispatch('commerce/fetchSettings');
 
                     if (isNewRecord) {
                         this.$router.push({ path: `/content/category/update?id=${this.model.id}` });
@@ -131,7 +131,7 @@
             },
 
             destroy () {
-                this.$store.dispatch('pages-categories/delete', this.model.id).then(() => {
+                this.$store.dispatch('content-categories/delete', this.model.id).then(() => {
                     this.$notify({type: 'success', text: 'Категория удалена'});
                     this.$store.dispatch('commerce/fetchSettings');
                     this.$router.push({ path: '/content/category/index' });
