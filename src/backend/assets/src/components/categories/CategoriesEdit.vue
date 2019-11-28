@@ -16,7 +16,7 @@
                 <b-card-body>
 
                     <b-form-group
-                        label="Заголовок"
+                        label="Название"
                         label-for="title"
                         label-cols-sm="2"
                     >
