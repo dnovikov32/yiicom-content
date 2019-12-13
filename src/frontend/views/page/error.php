@@ -1,14 +1,19 @@
 <?php
 
+use yii\helpers\Html;
+
 /**
- * @var \yii\web\View $this
- * @var string $name
- * @var string $message
+ * @var $this yii\web\View
+ * @var $name string
+ * @var $message string
  * @var \Exception $exception
  */
 
+$this->title = Html::encode($name);
+$this->params['breadcrumbs'][] = \Yii::t('yiicom', 'Error');
+
 ?>
 
-<h1><?php echo $name; ?></h1>
+<h1><?php echo Html::encode($name); ?></h1>
 
-<div><?php echo $message; ?></div>
+<div><?php echo Html::encode($message); ?></div>
