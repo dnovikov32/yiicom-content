@@ -2,6 +2,7 @@
 
 namespace yiicom\content\backend\models;
 
+use Yii;
 use yii\db\ActiveQuery;
 use yiicom\backend\search\SearchModelInterface;
 use yiicom\backend\search\SearchModelTrait;
@@ -34,16 +35,6 @@ class PageSearch extends Page implements SearchModelInterface
 
             [['title', 'alias', 'template'], 'safe'],
         ];
-    }
-
-    /**
-     * @return array
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'alias' => 'Адрес страницы'
-        ]);
     }
 
     /**
