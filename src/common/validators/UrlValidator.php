@@ -23,7 +23,7 @@ class UrlValidator extends Validator
             $model->$attribute = $this->filter($model->$attribute);
         }
 
-        if (!preg_match('/^[\w\-\.\/]+$/', $model->$attribute)) {
+        if (! preg_match('/^[\w\-\.\/]+$/', $model->$attribute)) {
             $model->addError($attribute, 'Неверный формат (доступны: буквы, цифры, "-", ".", "/"');
 
             return false;
@@ -40,6 +40,7 @@ class UrlValidator extends Validator
     {
         $value = mb_strtolower($value);
         $value = trim($value);
+        $value = str_replace(['_', ' '], '-', $value);
         $value = preg_replace('/(\/+)/', '/', $value);
         $value = trim($value, '/');
 
