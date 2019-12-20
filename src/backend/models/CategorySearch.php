@@ -12,6 +12,18 @@ class CategorySearch extends Category implements SearchModelInterface
     use SearchModelTrait;
 
     /**
+     * @var string
+     */
+    public $alias;
+
+    /**
+     * @inheritDoc
+     */
+    public function modelClass()
+    {
+        return Category::class;
+    }
+    /**
      * @return array
      */
     public function rules()
@@ -19,7 +31,7 @@ class CategorySearch extends Category implements SearchModelInterface
         return [
             [['id', 'parentId','status', 'position'], 'integer'],
 
-            [['name', 'title'], 'safe'],
+            [['name', 'title', 'alias'], 'safe'],
         ];
     }
 
@@ -30,7 +42,7 @@ class CategorySearch extends Category implements SearchModelInterface
     {
         $query = static::find();
 
-        $query->joinWith(['parent']);
+        $query->joinWith(['parent', 'url']);
 
         return $query;
     }
@@ -49,5 +61,6 @@ class CategorySearch extends Category implements SearchModelInterface
 
         $query->andFilterWhere(['LIKE', '{{%pages_categories}}.name', $this->name]);
         $query->andFilterWhere(['LIKE', '{{%pages_categories}}.title', $this->title]);
+        $query->andFilterWhere(['LIKE', '{{%pages_urls}}.alias', $this->alias]);
     }
 }

@@ -62,6 +62,8 @@
 
             </b-card>
 
+            <url-form :model="model"></url-form>
+
             <b-button type="submit" variant="primary" :disabled="isLoading">Сохранить</b-button>
 
             <yc-debug :model="model"></yc-debug>
@@ -75,11 +77,13 @@
 <script>
 
     import TitleField from "./../../../../../../../yiicom/src/backend/assets/src/components/form/TitleField.vue";
+    import UrlForm from "./../UrlForm.vue";
 
     export default {
 
         components: {
             'yc-title-fields': TitleField,
+            UrlForm
         },
 
         computed: {

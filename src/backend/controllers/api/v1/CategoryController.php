@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use yii\web\ServerErrorHttpException;
 use yiicom\backend\base\ApiController;
 use yiicom\common\traits\ModelTrait;
+use yiicom\content\common\grid\UrlAliasColumn;
 use yiicom\content\common\models\Category;
 use yiicom\content\backend\models\CategorySearch;
 
@@ -52,6 +53,10 @@ class CategoryController extends ApiController
                 'attribute' => 'title',
             ],
             [
+                'attribute' => 'alias',
+                'class' => UrlAliasColumn::class
+            ],
+            [
                 'attribute' => 'parentId',
                 'format' => 'html',
                 'filter' => (new Category)->getList(),
@@ -89,7 +94,7 @@ class CategoryController extends ApiController
             $id = Yii::$app->request->post('id');
             $model = $this->findOrNewModel(Category::class, $id);
 
-            if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
+            if ($model->loadAll(Yii::$app->request->post()) && $model->validateAll()) {
                 if (! $model->save(false)) {
                     throw new ServerErrorHttpException(Yii::t("yiicom", "Can't save model"));
                 }

@@ -7,10 +7,15 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\behaviors\TimestampBehavior;
+use yiicom\common\traits\ModelRelationsTrait;
+use yiicom\common\interfaces\ModelRelations;
 use yiicom\common\interfaces\ModelStatus;
 use yiicom\common\interfaces\ModelList;
 use yiicom\common\traits\ModelStatusTrait;
 use yiicom\common\traits\ModelListTrait;
+use yiicom\content\common\behaviors\PageUrlBehavior;
+use yiicom\content\common\interfaces\ModelPageUrl;
+use yiicom\content\common\traits\ModelPageUrlTrait;
 
 /**
  * @property integer $id
@@ -22,11 +27,12 @@ use yiicom\common\traits\ModelListTrait;
  * @property string $createdAt
  * @property string $updatedAt
  *
+ * @property PageUrl $url
  * @property Category $parent
  */
-class Category extends ActiveRecord implements ModelStatus, ModelList
+class Category extends ActiveRecord implements ModelStatus, ModelList, ModelRelations, ModelPageUrl
 {
-    use ModelStatusTrait, ModelListTrait;
+    use ModelStatusTrait, ModelListTrait, ModelRelationsTrait, ModelPageUrlTrait;
 
     /**
      * @return string
@@ -79,7 +85,7 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
 	}
 
     /**
-     * @return array
+     * @inheritDoc
      */
     public function behaviors()
     {
@@ -89,10 +95,34 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
                 'value' => new Expression('NOW()'),
                 'createdAtAttribute' => 'createdAt',
                 'updatedAtAttribute' => 'updatedAt',
-            ]
+            ],
+            'PageUrlBehavior' => [
+                'class' => PageUrlBehavior::class,
+            ],
         ]);
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function route()
+    {
+        return 'content/category/view';
+    }
+
+    /**
+     * @return array
+     */
+    public function relations()
+    {
+        return [
+            'PageUrl' => [
+                'class' => PageUrl::class,
+                'attribute' => 'url',
+            ],
+        ];
+    }
+    
     /**
      * @inheritdoc
      */
@@ -105,6 +135,7 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
             'title',
             'status',
             'position',
+            'url',
         ];
     }
 

@@ -18,7 +18,7 @@ class PageSearch extends Page implements SearchModelInterface
     public $alias;
 
     /**
-     * @return string
+     * @inheritDoc
      */
     public function modelClass()
     {
