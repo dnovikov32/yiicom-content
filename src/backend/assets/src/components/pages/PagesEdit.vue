@@ -8,7 +8,7 @@
 
             <page-form :model="model"></page-form>
 
-            <url-form :model="model.url"></url-form>
+            <url-form :model="model"></url-form>
 
             <files-form
                 :models.sync="model.files"
