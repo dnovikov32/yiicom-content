@@ -33,7 +33,7 @@ class PageSearch extends Page implements SearchModelInterface
         return [
             [['id', 'categoryId'], 'integer'],
 
-            [['title', 'alias', 'template'], 'safe'],
+            [['name', 'title', 'alias', 'template'], 'safe'],
         ];
     }
 
@@ -59,6 +59,7 @@ class PageSearch extends Page implements SearchModelInterface
             '{{%pages}}.categoryId' => $this->categoryId
         ]);
 
+        $query->andFilterWhere(['LIKE', '{{%pages}}.name', $this->name]);
         $query->andFilterWhere(['LIKE', '{{%pages}}.title', $this->title]);
         $query->andFilterWhere(['LIKE', '{{%pages}}.template', $this->template]);
         $query->andFilterWhere(['LIKE', '{{%pages_urls}}.alias', $this->alias]);

@@ -19,7 +19,7 @@ class CategorySearch extends Category implements SearchModelInterface
         return [
             [['id', 'parentId','status', 'position'], 'integer'],
 
-            [['title'], 'safe'],
+            [['name', 'title'], 'safe'],
         ];
     }
 
@@ -47,6 +47,7 @@ class CategorySearch extends Category implements SearchModelInterface
             '{{%pages_categories}}.position' => $this->position,
         ]);
 
+        $query->andFilterWhere(['LIKE', '{{%pages_categories}}.name', $this->name]);
         $query->andFilterWhere(['LIKE', '{{%pages_categories}}.title', $this->title]);
     }
 }

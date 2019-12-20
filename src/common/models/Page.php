@@ -22,6 +22,7 @@ use yiicom\files\common\behaviors\FilesBehavior;
 /**
  * @property integer $id
  * @property integer $categoryId
+ * @property string $name
  * @property string $title
  * @property string $teaser
  * @property string $body
@@ -54,8 +55,11 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
 		return array_merge(parent::rules(), [
 		    ['categoryId', 'integer'],
 
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'required'],
+            ['name', 'string', 'max' => 255],
+			
 			['title', 'filter', 'filter' => 'trim'],
-			['title', 'required'],
 			['title', 'string', 'max' => 255],
 
             ['teaser', 'safe'],
@@ -80,6 +84,7 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
 		return array_merge(parent::attributeLabels(), [
             'id' => Yii::t('yiicom', 'ID'),
 			'categoryId' => Yii::t('yiicom', 'Category ID'),
+            'name' => Yii::t('yiicom', 'Name'),
 			'title' => Yii::t('yiicom', 'Title'),
 			'teaser' => Yii::t('yiicom', 'Teaser'),
 			'body' => Yii::t('yiicom', 'Content'),
@@ -145,6 +150,7 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
         return [
             'id',
             'categoryId',
+            'name',
             'title',
             'teaser',
             'body',

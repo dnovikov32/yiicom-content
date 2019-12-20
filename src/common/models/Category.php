@@ -15,6 +15,7 @@ use yiicom\common\traits\ModelListTrait;
 /**
  * @property integer $id
  * @property integer $parentId
+ * @property string $name
  * @property string $title
  * @property integer $status
  * @property integer $position
@@ -43,8 +44,11 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
 		return array_merge(parent::rules(), [
 		    ['parentId', 'integer'],
 
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'required'],
+            ['name', 'string', 'max' => 255],
+
 			['title', 'filter', 'filter' => 'trim'],
-			['title', 'required'],
 			['title', 'string', 'max' => 255],
 
             ['status', 'in', 'range' => $this->statusesOptions()],
@@ -65,6 +69,7 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
 		return array_merge(parent::attributeLabels(), [
             'id' => Yii::t('yiicom', 'ID'),
 			'parentId' => Yii::t('yiicom', 'Parent category'),
+            'name' => Yii::t('yiicom', 'Name'),
 			'title' => Yii::t('yiicom', 'Title'),
             'status' => Yii::t('yiicom', 'Status'),
             'position' => Yii::t('yiicom', 'Position'),
@@ -96,6 +101,7 @@ class Category extends ActiveRecord implements ModelStatus, ModelList
         return [
             'id',
             'parentId',
+            'name',
             'title',
             'status',
             'position',

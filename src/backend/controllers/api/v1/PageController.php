@@ -44,11 +44,14 @@ class PageController extends ApiController
                 'headerOptions' => ['class' => 'wpx-70'],
             ],
             [
-                'attribute' => 'title',
+                'attribute' => 'name',
                 'format' => 'raw',
                 'value' => function(Page $model) {
-                    return Html::a($model->title, Url::to(['/#/content/page/update', 'id' => $model->id]));
+                    return Html::a($model->name, Url::to(['/#/content/page/update', 'id' => $model->id]));
                 }
+            ],
+            [
+                'attribute' => 'title',
             ],
             [
                 'attribute' => 'alias',

@@ -18,7 +18,7 @@
 
             <b-button type="submit" variant="primary" :disabled="isLoading">Сохранить</b-button>
 
-            <pre v-if="isDev">model: {{  model }}</pre>
+            <yc-debug :model="model"></yc-debug>
 
         </b-form>
 
@@ -42,9 +42,6 @@
         },
 
         computed: {
-            isDev: function () {
-                return this.$store.getters['commerce/isDev'];
-            },
             isLoading: function () {
                 return this.$store.getters['commerce/isLoading'];
             },

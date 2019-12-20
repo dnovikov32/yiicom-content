@@ -12,6 +12,7 @@ class m180213_054044_pages_create_pages_table extends Migration
         $this->createTable('{{%pages}}', [
             'id' => $this->primaryKey(),
             'categoryId' => $this->integer(),
+            'name' => $this->string()->notNull(),
             'title' => $this->string(),
             'teaser' => $this->text(),
             'body' => $this->text(),

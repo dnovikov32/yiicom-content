@@ -17,16 +17,18 @@
 
                     <b-form-group
                         label="Название"
-                        label-for="title"
+                        label-for="name"
                         label-cols-sm="2"
                     >
                         <b-form-input
-                            id="title"
+                            id="name"
                             type="text"
-                            v-model="model.title"
+                            v-model="model.name"
                             required
                             trim />
                     </b-form-group>
+
+                    <yc-title-fields :model="model"></yc-title-fields>
 
                     <b-form-group
                         label="Родительская категория"
@@ -62,7 +64,7 @@
 
             <b-button type="submit" variant="primary" :disabled="isLoading">Сохранить</b-button>
 
-            <pre v-if="isDev">model: {{  model }}</pre>
+            <yc-debug :model="model"></yc-debug>
 
         </b-form>
 
@@ -72,12 +74,15 @@
 
 <script>
 
+    import TitleField from "./../../../../../../../yiicom/src/backend/assets/src/components/form/TitleField.vue";
+
     export default {
 
+        components: {
+            'yc-title-fields': TitleField,
+        },
+
         computed: {
-            isDev: function () {
-                return this.$store.getters['commerce/isDev'];
-            },
             isLoading: function () {
                 return this.$store.getters['commerce/isLoading'];
             },

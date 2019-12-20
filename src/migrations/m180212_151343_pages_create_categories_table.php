@@ -15,6 +15,7 @@ class m180212_151343_pages_create_categories_table extends Migration
         $this->createTable('{{%pages_categories}}', [
             'id' => $this->primaryKey(),
             'parentId' => $this->integer(),
+            'name' => $this->string()->notNull(),
             'title' => $this->string(),
             'status' => $this->tinyInteger(1)->defaultValue(1),
             'position' => $this->tinyInteger(3)->defaultValue(0),

@@ -10,17 +10,19 @@
         <b-card-body>
 
             <b-form-group
-                label="Заголовок"
-                label-for="title"
+                label="Название"
+                label-for="name"
                 label-cols-sm="2"
             >
                 <b-form-input
-                    id="title"
+                    id="name"
                     type="text"
-                    v-model="model.title"
+                    v-model="model.name"
                     required
                     trim />
             </b-form-group>
+
+            <yc-title-fields :model="model"></yc-title-fields>
 
             <b-form-group
                 label="Категория"
@@ -87,7 +89,13 @@
 
 <script>
 
+    import TitleField from "./../../../../../../yiicom/src/backend/assets/src/components/form/TitleField.vue";
+
     export default {
+
+        components: {
+            'yc-title-fields': TitleField,
+        },
 
         props: [
             'model'
