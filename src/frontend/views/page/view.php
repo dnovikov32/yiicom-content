@@ -8,8 +8,10 @@ use yiicom\content\common\models\Page;
  * @var Page $page
  */
 
+$this->params['breadcrumbs'][] = Html::encode($page->title ?: $page->name);
+
 ?>
 
-<h1><?php echo Html::encode($page->title); ?></h1>
+<h1><?php echo Html::encode($page->title ?: $page->name); ?></h1>
 
 <?php echo $page->body; ?>
