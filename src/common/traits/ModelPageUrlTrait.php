@@ -14,11 +14,4 @@ trait ModelPageUrlTrait
 //        return $this->url;
 //    }
 
-    /**
-     * @return string
-     */
-    public function modelClass()
-    {
-        return static::class;
-    }
 }

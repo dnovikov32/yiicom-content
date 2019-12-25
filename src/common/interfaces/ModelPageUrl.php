@@ -12,13 +12,6 @@ use yiicom\content\common\models\PageUrl;
 interface ModelPageUrl
 {
     /**
-     * // TODO: move to relations trade
-     * Returns class name for PageUrl modelClass field value
-     * @return string
-     */
-    public function modelClass();
-
-    /**
      * Returns route to frontend controller for PageUrl route field value
      *
      * ```php

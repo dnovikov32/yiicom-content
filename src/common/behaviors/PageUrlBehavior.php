@@ -33,7 +33,7 @@ class PageUrlBehavior extends Behavior
 
  		return PageUrl::deleteAll([
             'modelId' => $owner->id,
-			'modelClass' => $owner->modelClass(),
+			'modelClass' => $owner->getModelClass(),
         ]);
 	}
 
@@ -47,7 +47,7 @@ class PageUrlBehavior extends Behavior
         $url = $owner->url;
 
         $url->modelId = $owner->id;
-        $url->modelClass = $owner->modelClass();
+        $url->modelClass = $owner->getModelClass();
 
 		if (empty($url->route)) {
             $url->route = $owner->route();
@@ -75,7 +75,7 @@ class PageUrlBehavior extends Behavior
         $owner = $this->owner;
 
         return $owner->hasOne(PageUrl::class, ['modelId' => 'id'])
-            ->onCondition(['{{%pages_urls}}.modelClass' => $owner->modelClass()]);
+            ->onCondition(['{{%pages_urls}}.modelClass' => $owner->getModelClass()]);
     }
 
     /**

@@ -20,7 +20,7 @@ class PageSearch extends Page implements SearchModelInterface
     /**
      * @inheritDoc
      */
-    public function modelClass()
+    public function getModelClass()
     {
         return Page::class;
     }

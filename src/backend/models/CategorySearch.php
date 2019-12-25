@@ -19,7 +19,7 @@ class CategorySearch extends Category implements SearchModelInterface
     /**
      * @inheritDoc
      */
-    public function modelClass()
+    public function getModelClass()
     {
         return Category::class;
     }
