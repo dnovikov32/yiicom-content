@@ -14,9 +14,17 @@ class PageController extends Controller
     {
         /* @var Page $page */
 		$page = $this->loadModel(Page::class, $id);
-
+		
+		$prevPage = Page::find()->prev($page);
+        $nextPage = Page::find()->next($page);
+		
+        $category = $page->category;
+        
 		return $this->render($this->getTemplate($page), [
-		    'page' => $page
+		    'page' => $page,
+            'prevPage' => $prevPage,
+            'nextPage' => $nextPage,
+            'category' => $category,
         ]);
     }
 

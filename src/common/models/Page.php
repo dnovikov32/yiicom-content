@@ -15,6 +15,7 @@ use yiicom\common\traits\ModelListTrait;
 use yiicom\common\traits\ModelRelationsTrait;
 use yiicom\content\common\interfaces\ModelPageUrl;
 use yiicom\content\common\traits\ModelPageUrlTrait;
+use yiicom\content\common\models\PageQuery;
 use yiicom\content\common\behaviors\PageUrlBehavior;
 use yiicom\files\common\models\File;
 use yiicom\files\common\behaviors\FilesBehavior;
@@ -46,6 +47,14 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
 	{
 		return '{{%pages}}';
 	}
+
+    /**
+     * @return PageQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(PageQuery::class, [get_called_class()]);
+    }
 
     /**
      * @return array
