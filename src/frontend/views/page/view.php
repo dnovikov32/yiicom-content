@@ -28,15 +28,17 @@ $this->params['breadcrumbs'][] = Html::encode($page->title ?: $page->name);
 
 <?php echo $page->body; ?>
 
-<div class="row mt-5">
-    <div class="col-md-6 text-left">
-        <?php if ($prevPage) : ?>
-            <a href="/<?= $prevPage->url->alias; ?>">&larr; <?= $prevPage->title ? Html::encode($prevPage->title) : Html::encode($prevPage->name); ?></a>
-        <?php endif; ?>
+<?php if ($category) : ?>
+    <div class="row mt-5">
+        <div class="col-md-6 text-left">
+            <?php if ($prevPage) : ?>
+                <a href="/<?= $prevPage->url->alias; ?>">&larr; <?= $prevPage->title ? Html::encode($prevPage->title) : Html::encode($prevPage->name); ?></a>
+            <?php endif; ?>
+        </div>
+        <div class="col-md-6 text-right">
+            <?php if ($nextPage) : ?>
+                <a href="/<?= $nextPage->url->alias; ?>"><?= $nextPage->title ? Html::encode($nextPage->title) : Html::encode($nextPage->name); ?> &rarr;</a>
+            <?php endif; ?>
+        </div>
     </div>
-    <div class="col-md-6 text-right">
-        <?php if ($nextPage) : ?>
-            <a href="/<?= $nextPage->url->alias; ?>"><?= $nextPage->title ? Html::encode($nextPage->title) : Html::encode($nextPage->name); ?> &rarr;</a>
-        <?php endif; ?>
-    </div>
-</div>
+<?php endif; ?>
