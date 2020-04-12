@@ -65,6 +65,39 @@
                 />
             </b-form-group>
 
+            <a class="offset-sm-2" data-toggle="collapse" href="#collapse-url-params">Дополнительные параметры</a>
+
+            <div class="collapse mt-2" id="collapse-url-params">
+
+                <b-form-group
+                    label="Путь в системе"
+                    label-for="url.route"
+                    label-cols-sm="2"
+                    description="Путь к экшену вида module/controller/action для обработки данного адреса (пример: content/page/view)"
+                >
+                    <b-form-input
+                        id="url.route"
+                        type="text"
+                        v-model="model.url.route"
+                        trim />
+                </b-form-group>
+
+                <b-form-group
+                    label="Параметры"
+                    label-for="url.params"
+                    label-cols-sm="2"
+                    description="Параметры запроса в json"
+                >
+                    <b-form-input
+                        id="url.params"
+                        type="text"
+                        v-model="model.url.params"
+                        trim />
+                </b-form-group>
+
+            </div>
+
+
         </b-card-body>
 
     </b-card>
