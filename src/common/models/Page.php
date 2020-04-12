@@ -45,7 +45,7 @@ class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelation
      */
 	public static function tableName()
 	{
-		return '{{%pages}}';
+		return '{{%content_page}}';
 	}
 
     /**

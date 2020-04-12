@@ -20,7 +20,7 @@ class PageUrlQuery extends ActiveQuery
 	}
 
     /**
-     * Returns PageUrlQuery by system route similar to /pages/page/view
+     * Returns PageUrlQuery by system route similar to /content/page/view
      * @param string $route
      * @param array $params
      * @return PageUrlQuery

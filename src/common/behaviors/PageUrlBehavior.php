@@ -75,7 +75,7 @@ class PageUrlBehavior extends Behavior
         $owner = $this->owner;
 
         return $owner->hasOne(PageUrl::class, ['modelId' => 'id'])
-            ->onCondition(['{{%pages_urls}}.modelClass' => $owner->getModelClass()]);
+            ->onCondition(['{{%content_url}}.modelClass' => $owner->getModelClass()]);
     }
 
     /**

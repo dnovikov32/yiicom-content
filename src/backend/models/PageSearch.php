@@ -55,13 +55,13 @@ class PageSearch extends Page implements SearchModelInterface
     protected function prepareFilters($query)
     {
         $query->andFilterWhere([
-            '{{%pages}}.id' => $this->id,
-            '{{%pages}}.categoryId' => $this->categoryId
+            '{{%content_page}}.id' => $this->id,
+            '{{%content_page}}.categoryId' => $this->categoryId
         ]);
 
-        $query->andFilterWhere(['LIKE', '{{%pages}}.name', $this->name]);
-        $query->andFilterWhere(['LIKE', '{{%pages}}.title', $this->title]);
-        $query->andFilterWhere(['LIKE', '{{%pages}}.template', $this->template]);
-        $query->andFilterWhere(['LIKE', '{{%pages_urls}}.alias', $this->alias]);
+        $query->andFilterWhere(['LIKE', '{{%content_page}}.name', $this->name]);
+        $query->andFilterWhere(['LIKE', '{{%content_page}}.title', $this->title]);
+        $query->andFilterWhere(['LIKE', '{{%content_page}}.template', $this->template]);
+        $query->andFilterWhere(['LIKE', '{{%content_url}}.alias', $this->alias]);
     }
 }

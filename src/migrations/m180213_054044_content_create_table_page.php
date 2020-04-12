@@ -2,14 +2,14 @@
 
 use yii\db\Migration;
 
-class m180213_054044_pages_create_pages_table extends Migration
+class m180213_054044_content_create_table_page extends Migration
 {
     /**
      * @inheritdoc
      */
     public function safeUp()
     {
-        $this->createTable('{{%pages}}', [
+        $this->createTable('{{%content_page}}', [
             'id' => $this->primaryKey(),
             'categoryId' => $this->integer(),
             'name' => $this->string()->notNull(),
@@ -22,9 +22,9 @@ class m180213_054044_pages_create_pages_table extends Migration
             'updatedAt' => $this->dateTime(),
         ], 'ENGINE=InnoDB CHARSET=utf8');
 
-        $this->addForeignKey('{{%fk-pages-pages_categories}}',
-            '{{%pages}}', 'categoryId',
-            '{{%pages_categories}}', 'id',
+        $this->addForeignKey('{{%fk-content_page-content_category}}',
+            '{{%content_page}}', 'categoryId',
+            '{{%content_category}}', 'id',
             'RESTRICT', 'CASCADE');
     }
 
@@ -33,8 +33,8 @@ class m180213_054044_pages_create_pages_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('{{%fk-pages-pages_categories}}', '{{%pages}}');
+        $this->dropForeignKey('{{%fk-content_page-content_category}}', '{{%content_page}}');
 
-        $this->dropTable('{{%pages}}');
+        $this->dropTable('{{%content_page}}');
     }
 }

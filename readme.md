@@ -78,7 +78,7 @@
 ],
 ```
 
-Run migrations to create tables: **pages**, **pages_categories** , **pages_urls**
+Run migrations to create tables: **content_page**, **content_category** , **content_url**
 ```bash
 php yii migrate
 ```

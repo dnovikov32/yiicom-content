@@ -57,8 +57,8 @@ class PageQuery extends ActiveQuery
     {
         $query = Page::find()
             ->withUrl()
-            ->where('{{%pages}}.createdAt > :createdAt', [':createdAt' => $model->createdAt])
-            ->orderBy(['{{%pages}}.createdAt' => SORT_ASC]);
+            ->where('{{%content_page}}.createdAt > :createdAt', [':createdAt' => $model->createdAt])
+            ->orderBy(['{{%content_page}}.createdAt' => SORT_ASC]);
 
         if ($category = $model->category) {
             $query->category([$category->id]);
@@ -75,8 +75,8 @@ class PageQuery extends ActiveQuery
     {
         $query = Page::find()
             ->withUrl()
-            ->where('{{%pages}}.createdAt < :createdAt', [':createdAt' => $model->createdAt])
-            ->orderBy(['{{%pages}}.createdAt' => SORT_DESC]);
+            ->where('{{%content_page}}.createdAt < :createdAt', [':createdAt' => $model->createdAt])
+            ->orderBy(['{{%content_page}}.createdAt' => SORT_DESC]);
 
         if ($category = $model->category) {
             $query->category([$category->id]);

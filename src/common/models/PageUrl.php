@@ -34,7 +34,7 @@ class PageUrl extends ActiveRecord implements ModelStatus
      */
 	public static function tableName()
 	{
-		return '{{%pages_urls}}';
+		return '{{%content_url}}';
 	}
 
     /**

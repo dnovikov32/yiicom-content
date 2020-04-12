@@ -53,14 +53,14 @@ class CategorySearch extends Category implements SearchModelInterface
     protected function prepareFilters($query)
     {
         $query->andFilterWhere([
-            '{{%pages_categories}}.id' => $this->id,
-            '{{%pages_categories}}.parentId' => $this->parentId,
-            '{{%pages_categories}}.status' => $this->status,
-            '{{%pages_categories}}.position' => $this->position,
+            '{{%content_category}}.id' => $this->id,
+            '{{%content_category}}.parentId' => $this->parentId,
+            '{{%content_category}}.status' => $this->status,
+            '{{%content_category}}.position' => $this->position,
         ]);
 
-        $query->andFilterWhere(['LIKE', '{{%pages_categories}}.name', $this->name]);
-        $query->andFilterWhere(['LIKE', '{{%pages_categories}}.title', $this->title]);
-        $query->andFilterWhere(['LIKE', '{{%pages_urls}}.alias', $this->alias]);
+        $query->andFilterWhere(['LIKE', '{{%content_category}}.name', $this->name]);
+        $query->andFilterWhere(['LIKE', '{{%content_category}}.title', $this->title]);
+        $query->andFilterWhere(['LIKE', '{{%content_url}}.alias', $this->alias]);
     }
 }

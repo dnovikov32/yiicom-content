@@ -39,7 +39,7 @@ class Category extends ActiveRecord implements ModelStatus, ModelList, ModelRela
      */
 	public static function tableName()
 	{
-		return '{{%pages_categories}}';
+		return '{{%content_category}}';
 	}
 
     /**
@@ -160,6 +160,6 @@ class Category extends ActiveRecord implements ModelStatus, ModelList, ModelRela
     public function getParent()
     {
         return $this->hasOne(Category::class, ['id' => 'parentId'])
-            ->alias('pages_categories_parent');
+            ->alias('content_category_parent');
     }
 }
