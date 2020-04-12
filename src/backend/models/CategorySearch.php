@@ -6,6 +6,7 @@ use yii\db\ActiveQuery;
 use yiicom\backend\search\SearchModelInterface;
 use yiicom\backend\search\SearchModelTrait;
 use yiicom\content\common\models\Category;
+use yiicom\content\common\models\PageUrl;
 
 class CategorySearch extends Category implements SearchModelInterface
 {
@@ -52,15 +53,18 @@ class CategorySearch extends Category implements SearchModelInterface
      */
     protected function prepareFilters($query)
     {
+        $contentCategory = Category::tableName();
+        $contentUrl = PageUrl::tableName();
+
         $query->andFilterWhere([
-            '{{%content_category}}.id' => $this->id,
-            '{{%content_category}}.parentId' => $this->parentId,
-            '{{%content_category}}.status' => $this->status,
-            '{{%content_category}}.position' => $this->position,
+            "$contentCategory.id" => $this->id,
+            "$contentCategory.parentId" => $this->parentId,
+            "$contentCategory.status" => $this->status,
+            "$contentCategory.position" => $this->position,
         ]);
 
-        $query->andFilterWhere(['LIKE', '{{%content_category}}.name', $this->name]);
-        $query->andFilterWhere(['LIKE', '{{%content_category}}.title', $this->title]);
-        $query->andFilterWhere(['LIKE', '{{%content_url}}.alias', $this->alias]);
+        $query->andFilterWhere(['LIKE', "$contentCategory.name", $this->name]);
+        $query->andFilterWhere(['LIKE', "$contentCategory.title", $this->title]);
+        $query->andFilterWhere(['LIKE', "$contentUrl.alias", $this->alias]);
     }
 }

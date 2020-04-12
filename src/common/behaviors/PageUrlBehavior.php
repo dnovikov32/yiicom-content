@@ -73,9 +73,10 @@ class PageUrlBehavior extends Behavior
     {
         /* @var ActiveRecord|ModelPageUrl $owner */
         $owner = $this->owner;
+        $contentUrl = PageUrl::tableName();
 
         return $owner->hasOne(PageUrl::class, ['modelId' => 'id'])
-            ->onCondition(['{{%content_url}}.modelClass' => $owner->getModelClass()]);
+            ->onCondition(["$contentUrl.modelClass" => $owner->getModelClass()]);
     }
 
     /**

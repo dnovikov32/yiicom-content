@@ -55,10 +55,12 @@ class PageQuery extends ActiveQuery
      */
     public function prev(Page $model): ?Page
     {
+        $contentPage = Page::tableName();
+
         $query = Page::find()
             ->withUrl()
-            ->where('{{%content_page}}.createdAt > :createdAt', [':createdAt' => $model->createdAt])
-            ->orderBy(['{{%content_page}}.createdAt' => SORT_ASC]);
+            ->where("$contentPage.createdAt > :createdAt", [':createdAt' => $model->createdAt])
+            ->orderBy(["$contentPage.createdAt" => SORT_ASC]);
 
         if ($category = $model->category) {
             $query->category([$category->id]);
@@ -73,10 +75,12 @@ class PageQuery extends ActiveQuery
      */
     public function next(Page $model): ?Page
     {
+        $contentPage = Page::tableName();
+
         $query = Page::find()
             ->withUrl()
-            ->where('{{%content_page}}.createdAt < :createdAt', [':createdAt' => $model->createdAt])
-            ->orderBy(['{{%content_page}}.createdAt' => SORT_DESC]);
+            ->where("$contentPage.createdAt < :createdAt", [':createdAt' => $model->createdAt])
+            ->orderBy(["$contentPage.createdAt" => SORT_DESC]);
 
         if ($category = $model->category) {
             $query->category([$category->id]);

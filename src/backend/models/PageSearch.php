@@ -7,6 +7,7 @@ use yii\db\ActiveQuery;
 use yiicom\backend\search\SearchModelInterface;
 use yiicom\backend\search\SearchModelTrait;
 use yiicom\content\common\models\Page;
+use yiicom\content\common\models\PageUrl;
 
 class PageSearch extends Page implements SearchModelInterface
 {
@@ -54,14 +55,17 @@ class PageSearch extends Page implements SearchModelInterface
      */
     protected function prepareFilters($query)
     {
+        $contentPage = Page::tableName();
+        $contentUrl = PageUrl::tableName();
+
         $query->andFilterWhere([
-            '{{%content_page}}.id' => $this->id,
-            '{{%content_page}}.categoryId' => $this->categoryId
+            "$contentPage.id" => $this->id,
+            "$contentPage.categoryId" => $this->categoryId
         ]);
 
-        $query->andFilterWhere(['LIKE', '{{%content_page}}.name', $this->name]);
-        $query->andFilterWhere(['LIKE', '{{%content_page}}.title', $this->title]);
-        $query->andFilterWhere(['LIKE', '{{%content_page}}.template', $this->template]);
-        $query->andFilterWhere(['LIKE', '{{%content_url}}.alias', $this->alias]);
+        $query->andFilterWhere(['LIKE', "$contentPage.name", $this->name]);
+        $query->andFilterWhere(['LIKE', "$contentPage.title", $this->title]);
+        $query->andFilterWhere(['LIKE', "$contentPage.template", $this->template]);
+        $query->andFilterWhere(['LIKE', "$contentUrl.alias", $this->alias]);
     }
 }
