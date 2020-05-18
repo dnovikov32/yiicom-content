@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\db\ActiveQuery;
 use yii\behaviors\TimestampBehavior;
+use yiicom\common\interfaces\ModelInfoInterface;
 use yiicom\common\interfaces\ModelStatus;
 use yiicom\common\interfaces\ModelList;
 use yiicom\common\interfaces\ModelRelations;
@@ -36,17 +37,26 @@ use yiicom\files\common\behaviors\FilesBehavior;
  * @property File[] $files
  * @property Category $category
  */
-class Page extends ActiveRecord implements ModelStatus, ModelList, ModelRelations, ModelPageUrl
+class Page extends ActiveRecord implements
+    ModelInfoInterface, ModelStatus, ModelList, ModelRelations, ModelPageUrl
 {
     use ModelStatusTrait, ModelListTrait, ModelRelationsTrait, ModelPageUrlTrait;
 
     /**
      * @return string
      */
-	public static function tableName()
+	public static function tableName(): string
 	{
 		return '{{%content_page}}';
 	}
+
+    /**
+     * @return string
+     */
+    public static function modelTitle(): string
+    {
+        return \Yii::t('yiicom', 'Page');
+    }
 
     /**
      * @return PageQuery
