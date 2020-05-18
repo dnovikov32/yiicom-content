@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\db\ActiveQuery;
+use yii\behaviors\TimestampBehavior;
 use yiicom\common\interfaces\ModelList;
 use yiicom\common\traits\ModelListTrait;
 use yiicom\content\common\models\Relation;
@@ -17,6 +18,8 @@ use yiicom\content\common\models\Relation;
  * @property string $modelClass
  * @property string $relationClass
  * @property integer $position
+ * @property string $createdAt
+ * @property string $updatedAt
  *
  * @property Relation[] $relations
  */
@@ -55,7 +58,9 @@ class RelationGroup extends ActiveRecord implements ModelList
             ['relationClass', 'string', 'max' => 255],
 
             ['position', 'integer'],
-            ['position', 'default', 'value' => 0]
+            ['position', 'default', 'value' => 0],
+
+            [['createdAt', 'updatedAt'], 'safe'],
 		]);
 	}
 
@@ -71,9 +76,25 @@ class RelationGroup extends ActiveRecord implements ModelList
 			'modelClass' => Yii::t('yiicom', 'Model Class'),
 			'relationClass' => Yii::t('yiicom', 'Relation Model Class'),
 			'position' => Yii::t('yiicom', 'Position'),
+            'createdAt' => Yii::t('yiicom', 'Created At'),
+            'updatedAt' => Yii::t('yiicom', 'Updated At'),
 		]);
 	}
 
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            'Timestamp' => [
+                'class' => TimestampBehavior::class,
+                'value' => new Expression('NOW()'),
+                'createdAtAttribute' => 'createdAt',
+                'updatedAtAttribute' => 'updatedAt',
+            ],
+        ]);
+    }
     /**
      * @inheritdoc
      */

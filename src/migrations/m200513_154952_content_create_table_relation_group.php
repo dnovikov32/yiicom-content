@@ -13,6 +13,8 @@ class m200513_154952_content_create_table_relation_group extends Migration
             'modelClass' => $this->string()->notNull(),
             'relationClass' => $this->string()->notNull(),
             'position' => $this->tinyInteger(3)->defaultValue(0),
+            'createdAt' => $this->dateTime(),
+            'updatedAt' => $this->dateTime(),
         ], 'ENGINE=InnoDB CHARSET=utf8');
     }
 
