@@ -71,6 +71,20 @@
                         </b-form-select>
                     </b-form-group>
 
+                    <b-form-group
+                        label="Позиция"
+                        label-for="position"
+                        label-cols-sm="2"
+                    >
+                        <b-form-input
+                            id="position"
+                            class="col-3"
+                            type="number"
+                            v-model="model.position"
+                            required
+                            trim />
+                    </b-form-group>
+
                 </b-card-body>
 
             </b-card>
