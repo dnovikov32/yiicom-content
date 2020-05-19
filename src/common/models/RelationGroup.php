@@ -73,8 +73,8 @@ class RelationGroup extends ActiveRecord implements ModelList
             'id' => Yii::t('yiicom', 'ID'),
             'name' => Yii::t('yiicom', 'Name'),
 			'title' => Yii::t('yiicom', 'Title'),
-			'modelClass' => Yii::t('yiicom', 'Model Class'),
-			'relationClass' => Yii::t('yiicom', 'Relation Model Class'),
+			'modelClass' => Yii::t('yiicom', 'Model class'),
+			'relationClass' => Yii::t('yiicom', 'Relation model class'),
 			'position' => Yii::t('yiicom', 'Position'),
             'createdAt' => Yii::t('yiicom', 'Created At'),
             'updatedAt' => Yii::t('yiicom', 'Updated At'),
@@ -115,6 +115,6 @@ class RelationGroup extends ActiveRecord implements ModelList
      */
     public function getRelations()
     {
-        return $this->hasMany(Relation::class, ['id' => 'groupId']);
+        return $this->hasMany(Relation::class, ['groupId' => 'id']);
     }
 }

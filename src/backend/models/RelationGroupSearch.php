@@ -3,6 +3,7 @@
 namespace yiicom\content\backend\models;
 
 use yii\db\ActiveQuery;
+use yii\data\ActiveDataProvider;
 use yiicom\backend\search\SearchModelInterface;
 use yiicom\backend\search\SearchModelTrait;
 use yiicom\content\common\models\RelationGroup;
@@ -28,6 +29,25 @@ class RelationGroupSearch extends RelationGroup implements SearchModelInterface
 
             [['name', 'title', 'modelClass', 'relationClass'], 'safe'],
         ];
+    }
+
+    /**
+     * @param ActiveQuery $query
+     * @return ActiveDataProvider
+     */
+    protected function prepareDataProvider($query)
+    {
+        return new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'position' => SORT_ASC
+                ],
+            ],
+            'pagination'=> [
+                'pageSize' => 100
+            ]
+        ]);
     }
 
     /**

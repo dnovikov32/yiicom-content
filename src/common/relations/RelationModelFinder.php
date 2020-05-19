@@ -22,6 +22,7 @@ class RelationModelFinder
     /**
      * @return array
      * @throws \ReflectionException
+     * TODO: add button "Find models" to admin panel
      */
     public function findInVendorModules(): array
     {

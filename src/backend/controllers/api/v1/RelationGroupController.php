@@ -10,6 +10,7 @@ use yiicom\common\traits\ModelTrait;
 use yiicom\common\collection\Collection;
 use yiicom\content\backend\models\RelationGroupSearch;
 use yiicom\content\common\models\RelationGroup;
+use yiicom\content\common\relations\RelationModelFinder;
 
 class RelationGroupController extends ApiController
 {
@@ -33,9 +34,12 @@ class RelationGroupController extends ApiController
 
     /**
      * @return array
+     * @throws \ReflectionException
      */
     public function getGridColumns()
     {
+        $relationModels = (new RelationModelFinder(\Yii::$app))->findInVendorModules();
+
         return [
             [
                 'attribute' => 'id',
@@ -45,13 +49,21 @@ class RelationGroupController extends ApiController
                 'attribute' => 'title',
             ],
             [
-                'attribute' => 'title',
+                'attribute' => 'name',
             ],
             [
                 'attribute' => 'modelClass',
+                'filter' => $relationModels,
+                'value' => function(RelationGroupSearch $model) use ($relationModels) {
+                    return $relationModels[$model->modelClass] ?? '';
+                }
             ],
             [
                 'attribute' => 'relationClass',
+                'filter' => $relationModels,
+                'value' => function(RelationGroupSearch $model) use ($relationModels) {
+                    return $relationModels[$model->relationClass] ?? '';
+                }
             ],
             [
                 'attribute' => 'position',
