@@ -20,6 +20,7 @@ class CreateController extends Controller
     public function actionDefaults()
     {
         $mainPage = new Page;
+        $mainPage->name = Yii::t("yiicom", "Main page");
         $mainPage->title = Yii::t("yiicom", "Main page");
         $mainPage->template = 'index';
 
