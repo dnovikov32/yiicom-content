@@ -84,6 +84,7 @@ class PageUrl extends ActiveRecord implements ModelStatus
 			['seoDescription', 'string', 'max' => 255],
 
             ['sitemap', 'boolean'],
+            ['sitemap', 'default', 'value' => true],
 
 			['status', 'in', 'range' => $this->statusesOptions()],
 
@@ -140,6 +141,7 @@ class PageUrl extends ActiveRecord implements ModelStatus
             'seoTitle',
             'seoKeywords',
             'seoDescription',
+            'sitemap',
         ];
     }
 

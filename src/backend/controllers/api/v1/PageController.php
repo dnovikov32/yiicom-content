@@ -76,7 +76,13 @@ class PageController extends ApiController
     public function actionFind(int $id = null)
     {
         try {
-            return $this->findOrNewModel(Page::class, $id);
+            $model = $this->findOrNewModel(Page::class, $id);
+
+            if ($model->isNewRecord) {
+                $model->url->sitemap = true;
+            }
+
+            return $model;
         } catch (\Throwable $e) {
             throw new ServerErrorHttpException(Yii::t("yiicom", "Server error: ") . $e->getMessage());
         }

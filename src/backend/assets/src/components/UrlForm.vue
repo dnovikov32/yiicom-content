@@ -95,6 +95,18 @@
                         trim />
                 </b-form-group>
 
+              <b-form-group
+                  label="Включить адрес в sitemap"
+                  label-for="url.sitemap"
+                  label-cols-sm="2"
+              >
+                <b-form-checkbox
+                    id="url.sitemap"
+                    type="text"
+                    v-model="model.url.sitemap"
+                    trim />
+              </b-form-group>
+
             </div>
 
 
